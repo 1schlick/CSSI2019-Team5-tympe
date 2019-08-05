@@ -10,7 +10,11 @@ jinja_current_dir = jinja2.Environment(
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
 
+text = open("words.txt", "r")
+list = []
 
+for x in text:
+    list.append(x)
 
 class welcome(webapp2.RequestHandler):
     def get(self):
@@ -18,20 +22,23 @@ class welcome(webapp2.RequestHandler):
         self.response.write(start_template.render())
 
     def post(self):
-        f = open("words.txt", "r")
-        fl = []
-
-        for x in f:
-            fl.append(x)
-
-        randWord = fl[random.randint(0,999)]
-        dict = {"word": randWord}
+        dict = {"randWord": list[random.randint(0,999)]}
         end_template = jinja_current_dir.get_template("Game.html")
         self.response.write(end_template.render(dict))
 
 class game(webapp2.RequestHandler):
-    def get (self):
-        
+    def get(self):
+
+
+        self.randWord = list[random.randint(0,999)]
+        self.userWord = self.request.get("userWord")
+
+    def post(self):
+        if self.randWord == self.userWord:
+            end_template = jinja_current_dir.get_template("Game.html")
+            self.response.write(end_template.render(self.dict))
+
+
 
 
 app = webapp2.WSGIApplication([
