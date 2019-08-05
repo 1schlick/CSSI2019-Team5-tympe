@@ -1,21 +1,18 @@
 .container {
  text-align: center;
+ display:grid;
+ grid-template-columns: 100px 100px 100px 100px 100px;
+ grid-template-rows: 100px 100px 100px 100px 100px;
 }
 
 #title {
-  font-size: 100px
-}
-
-#gen1box {
-
-}
-
-#type1box {
-
+  font-size: 100px;
+  grid-column: 2/ span 3;
 }
 
 #button {
-
+grid-column: 3;
+grid-row: 3;
 }
 
 .btn {
@@ -32,6 +29,7 @@
    border-radius: 15px;
    box-shadow: 0 9px #999;
    Animated-Buttons - "Pressed Effect"
+
 }
 .btn:hover {
   background-color: #3e8e41

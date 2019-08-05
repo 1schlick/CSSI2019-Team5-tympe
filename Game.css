@@ -1,0 +1,11 @@
+.container {
+ text-align: center;
+ display:grid;
+ grid-template-columns: 25px 25px 25px 25px
+ grid-template-rows: 25px 25px 25px
+}
+
+#title {
+  font-size: 100px
+
+}
