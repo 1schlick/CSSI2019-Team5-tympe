@@ -27,18 +27,19 @@ class welcome(webapp2.RequestHandler):
         self.response.write(end_template.render(dict))
 
 class game(webapp2.RequestHandler):
+    correct = True
     def get(self):
-
-
-        self.randWord = list[random.randint(0,999)]
+        if self.correct:
+            self.randWord = list[random.randint(0,999)]
         self.userWord = self.request.get("userWord")
 
     def post(self):
         if self.randWord == self.userWord:
-            end_template = jinja_current_dir.get_template("Game.html")
-            self.response.write(end_template.render(self.dict))
-
-
+            self.correct = True
+        else:
+            self.correct = False
+        end_template = jinja_current_dir.get_template("Game.html")
+        self.response.write(end_template.render(self.dict))
 
 
 app = webapp2.WSGIApplication([
