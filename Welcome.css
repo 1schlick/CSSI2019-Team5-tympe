@@ -29,11 +29,11 @@ grid-row: 3;
    border: none;
    border-radius: 15px;
    box-shadow: 0 9px #999;
-   Animated-Buttons - "Pressed Effect"
+   Animated-Buttons - "Pressed Effect";
 
 }
 .btn:hover {
-  background-color: #3e8e41
+  background-color: #3e8e41;
 }
 .btn:active {
   background-color: #3e8e41;
