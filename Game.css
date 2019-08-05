@@ -6,15 +6,18 @@
 }
 
 #title {
-  font-size: 100px
+  font-size: 100px;
   grid-column: 2/ span 3;
   text-align: center;
 }
 
-#gen1box{
-
+.box {
+  grid-column: 2/ span 3;
+  grid-row:3;
+  text-align: center;
 }
-
-#type1box{
-  
+.text {
+grid-column: 2/ span 3;
+grid-row:4;
+text-align: center;
 }

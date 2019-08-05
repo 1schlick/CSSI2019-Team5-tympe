@@ -11,7 +11,7 @@
   text-align: center;
 }
 
-#button {
+form {
 grid-column: 3;
 grid-row: 3;
 }
