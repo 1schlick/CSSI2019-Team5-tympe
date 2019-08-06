@@ -31,5 +31,6 @@ body,html {
   background-image: url(https://media0.giphy.com/media/mw5dladT6nyH6/giphy.gif);
   background-repeat: no-repeat;
   background-position: center;
+  background-size: auto;
 
 }
