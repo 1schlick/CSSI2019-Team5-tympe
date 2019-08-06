@@ -18,12 +18,12 @@ for x in text:
 
 class welcome(webapp2.RequestHandler):
     def get(self):
-        start_template = jinja_current_dir.get_template("Welcome.html")
+        start_template = jinja_current_dir.get_template("/templates/Welcome.html")
         self.response.write(start_template.render())
 
     def post(self):
         dict = {"randWord": list[random.randint(0,999)]}
-        end_template = jinja_current_dir.get_template("Game.html")
+        end_template = jinja_current_dir.get_template("/templates/Game.html")
         self.response.write(end_template.render(dict))
 
 class game(webapp2.RequestHandler):
@@ -38,7 +38,7 @@ class game(webapp2.RequestHandler):
             self.correct = True
         else:
             self.correct = False
-        end_template = jinja_current_dir.get_template("Game.html")
+        end_template = jinja_current_dir.get_template("/templates/Game.html")
         self.response.write(end_template.render(self.dict))
 
 
