@@ -16,30 +16,38 @@ list = []
 for x in text:
     list.append(x)
 
+score = 0
+
 class welcome(webapp2.RequestHandler):
     def get(self):
         start_template = jinja_current_dir.get_template("/templates/Welcome.html")
         self.response.write(start_template.render())
 
     def post(self):
-        dict = {"randWord": list[random.randint(0,999)]}
+        global score
+        score = 0
+        dict = {"randWord": list[random.randint(0,999)],
+                "score": 0}
         end_template = jinja_current_dir.get_template("/templates/Game.html")
         self.response.write(end_template.render(dict))
 
 class game(webapp2.RequestHandler):
-    correct = True
-    def get(self):
-        if self.correct:
-            self.randWord = list[random.randint(0,999)]
-        self.userWord = self.request.get("userWord")
+    randWord = ""
+    userWord = ""
+
+
 
     def post(self):
-        if self.randWord == self.userWord:
-            self.correct = True
-        else:
-            self.correct = False
+        self.randWord = list[random.randint(0,999)]
+        self.userWord = self.request.get("userWord")
+        if id(self.userWord) == id(self.randWord):
+            global score
+            score += 1
+
+        dict = {"randWord": self.randWord,
+                "score": str(score)}
         end_template = jinja_current_dir.get_template("/templates/Game.html")
-        self.response.write(end_template.render(self.dict))
+        self.response.write(end_template.render(dict))
 
 
 app = webapp2.WSGIApplication([
