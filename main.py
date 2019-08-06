@@ -2,6 +2,7 @@ import webapp2
 import os
 import jinja2
 import random
+import threading
 
 
 
@@ -1003,6 +1004,9 @@ arr.append("the")
 
 score = 0
 randWord = ""
+time = 60
+
+
 
 class welcome(webapp2.RequestHandler):
     def get(self):
@@ -1014,8 +1018,19 @@ class welcome(webapp2.RequestHandler):
         score = 0
         global randWord
         randWord = list[random.randint(0,984)]
+
+        def advanceTime():
+            global time
+            time -= 1
+            if time != 0:
+                threading.Timer(1.0, advanceTime()).start()
+
         dict = {"randWord": randWord,
-                "score": 0}
+                "score": 0,
+                "time": 60}
+
+        advanceTime()
+
         end_template = jinja_current_dir.get_template("/templates/Game.html")
         self.response.write(end_template.render(dict))
 
@@ -1023,16 +1038,18 @@ class game(webapp2.RequestHandler):
     userWord = ""
 
     def post(self):
-        self.userWord = self.request.get("userWord")
-        if randWord == self.userWord:
-            global score
-            score += 1
-        global randWord
-        randWord = list[random.randint(0,984)]
-        dict = {"randWord": randWord,
-                "score": str(score)}
-        end_template = jinja_current_dir.get_template("/templates/Game.html")
-        self.response.write(end_template.render(dict))
+        if time > 0:
+            self.userWord = self.request.get("userWord")
+            if randWord == self.userWord:
+                global score
+                score += 1
+            global randWord
+            randWord = list[random.randint(0,984)]
+            dict = {"randWord": randWord,
+                    "score": score,
+                    "time": time}
+            end_template = jinja_current_dir.get_template("/templates/Game.html")
+            self.response.write(end_template.render(dict))
 
 
 app = webapp2.WSGIApplication([
