@@ -10,7 +10,7 @@ jinja_current_dir = jinja2.Environment(
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
 
-text = open("words.txt", "r")
+text = open("test.txt", "r")
 list = []
 
 for x in text:
@@ -26,7 +26,7 @@ class welcome(webapp2.RequestHandler):
     def post(self):
         global score
         score = 0
-        dict = {"randWord": list[random.randint(0,999)],
+        dict = {"randWord": list[0],
                 "score": 0}
         end_template = jinja_current_dir.get_template("/templates/Game.html")
         self.response.write(end_template.render(dict))
@@ -38,9 +38,9 @@ class game(webapp2.RequestHandler):
 
 
     def post(self):
-        self.randWord = list[random.randint(0,999)]
+        self.randWord = list[0]
         self.userWord = self.request.get("userWord")
-        if id(self.userWord) == id(self.randWord):
+        if self.randWord == "word":
             global score
             score += 1
 
