@@ -18,12 +18,18 @@
   font-size: 25px
 }
 
-.text {
+form {
   grid-column: 2/ span 3;
   grid-row: 4;
   text-align: center;
 }
 
 #score {
+
+}
+body,html {
+  background-image: url(https://media0.giphy.com/media/mw5dladT6nyH6/giphy.gif);
+  background-repeat: no-repeat;
+  background-position: center;
 
 }
