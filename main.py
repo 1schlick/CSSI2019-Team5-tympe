@@ -998,19 +998,22 @@ list.append("save")
 list.append("control")
 list.append("decimal")
 
-arr = []
-arr.append("word")
-arr.append("the")
+f = open("words.txt","r")
+arr = f.readlines()
+
+
 
 points = 0
 randWord = ""
-time = 60
 
-def advanceTime():
-    global time
-    time -= 1
-    if time != 0:
-        threading.Timer(1.0, advanceTime).start()
+def advanceTime(self):
+    threading.Timer(60, renderScores, self).start()
+
+def renderScores(self):
+    dict = {"points": points,
+            "score": points/60.0}
+    end_template = jinja_current_dir.get_template("/templates/Scores.html")
+    self.response.write(end_template.render(dict))
 
 class welcome(webapp2.RequestHandler):
     def get(self):
@@ -1021,7 +1024,7 @@ class welcome(webapp2.RequestHandler):
         global points
         points = 0
         global randWord
-        randWord = list[random.randint(0,984)]
+        randWord = arr[random.randint(0,len(arr)-1)]
 
         dict = {"randWord": randWord,
                 "points": 0,
@@ -1036,23 +1039,18 @@ class game(webapp2.RequestHandler):
     userWord = ""
 
     def post(self):
-        if time > 0:
-            self.userWord = self.request.get("userWord")
-            if randWord == self.userWord:
-                global points
-                points += len(randWord)
-            global randWord
-            randWord = list[random.randint(0,984)]
-            dict = {"randWord": randWord,
-                    "points": points,
-                    "time": time}
-            end_template = jinja_current_dir.get_template("/templates/Game.html")
-            self.response.write(end_template.render(dict))
-        else:
-            dict = {"points": points,
-                    "score": points/60.0}
-            end_template = jinja_current_dir.get_template("/templates/Scores.html")
-            self.response.write(end_template.render(dict))
+        self.userWord = self.request.get("userWord")
+        if randWord == self.userWord:
+            global points
+            points += len(randWord)
+        global randWord
+        randWord = arr[random.randint(0,len(arr)-1)]
+        dict = {"randWord": randWord,
+                "points": points,
+                "time": time}
+        end_template = jinja_current_dir.get_template("/templates/Game.html")
+        self.response.write(end_template.render(dict))
+
 
 class score(webapp2.RequestHandler):
     def get(self):
