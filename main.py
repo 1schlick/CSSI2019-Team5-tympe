@@ -1002,11 +1002,15 @@ arr = []
 arr.append("word")
 arr.append("the")
 
-score = 0
+points = 0
 randWord = ""
 time = 60
 
-
+def advanceTime():
+    global time
+    time -= 1
+    if time != 0:
+        threading.Timer(1.0, advanceTime).start()
 
 class welcome(webapp2.RequestHandler):
     def get(self):
@@ -1014,19 +1018,13 @@ class welcome(webapp2.RequestHandler):
         self.response.write(start_template.render())
 
     def post(self):
-        global score
-        score = 0
+        global points
+        points = 0
         global randWord
         randWord = list[random.randint(0,984)]
 
-        def advanceTime():
-            global time
-            time -= 1
-            if time != 0:
-                threading.Timer(1.0, advanceTime()).start()
-
         dict = {"randWord": randWord,
-                "score": 0,
+                "points": 0,
                 "time": 60}
 
         advanceTime()
@@ -1041,18 +1039,30 @@ class game(webapp2.RequestHandler):
         if time > 0:
             self.userWord = self.request.get("userWord")
             if randWord == self.userWord:
-                global score
-                score += 1
+                global points
+                points += len(randWord)
             global randWord
             randWord = list[random.randint(0,984)]
             dict = {"randWord": randWord,
-                    "score": score,
+                    "points": points,
                     "time": time}
             end_template = jinja_current_dir.get_template("/templates/Game.html")
             self.response.write(end_template.render(dict))
+        else:
+            dict = {"points": points,
+                    "score": points/60.0}
+            end_template = jinja_current_dir.get_template("/templates/Scores.html")
+            self.response.write(end_template.render(dict))
 
+class score(webapp2.RequestHandler):
+    def get(self):
+        dict = {"points": points,
+                "score": points/60.0}
+        end_template = jinja_current_dir.get_template("/templates/Scores.html")
+        self.response.write(end_template.render(dict))
 
 app = webapp2.WSGIApplication([
     ('/', welcome),
-    ('/game', game)
+    ('/game', game),
+    ('/score', score)
 ], debug=True)
