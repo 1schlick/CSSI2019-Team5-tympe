@@ -6,17 +6,11 @@
     <link rel="stylesheet" href="/styles/Game.css">
   </head>
   <body>
-    <div class="container">
-      <div id="title">Tympe</div>
-      <div id="box">{{randWord}}</div>
-      <div id="points">{{points}}</div>
-      <div id="safeTimer">
-        <h2>Timer</h2>
-        <p id="timerDisplay">{{time}}</p>
-      </div>
-      <div id="typebox"></div>
-        <form method = "post" action = "game">
-          <input type="text" name = "userWord" value = "">
-        </form>
+    <div class = "container" id = "title">Tympe</div>
+    <div class = "container" id = "word">word</div>
+    <div class = "container" id = "time">time: 60</div>
+    <div class = "container" id = "points">points: 0</div>
+    <input type = "text" class = "container" id = "box" value = ""></input>
   </body>
+  <script src = "game.js"></script>
 </html>
