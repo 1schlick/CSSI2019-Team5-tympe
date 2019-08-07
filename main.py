@@ -1006,9 +1006,6 @@ arr = f.readlines()
 points = 0
 randWord = ""
 
-def advanceTime(self):
-    threading.Timer(60, renderScores, self).start()
-
 def renderScores(self):
     dict = {"points": points,
             "score": points/60.0}
@@ -1024,13 +1021,12 @@ class welcome(webapp2.RequestHandler):
         global points
         points = 0
         global randWord
-        randWord = arr[random.randint(0,len(arr)-1)]
+        randWord = list[random.randint(0,len(list)-1)]
 
         dict = {"randWord": randWord,
-                "points": 0,
-                "time": 60}
+                "points": 0}
 
-        advanceTime()
+
 
         end_template = jinja_current_dir.get_template("/templates/Game.html")
         self.response.write(end_template.render(dict))
@@ -1044,10 +1040,9 @@ class game(webapp2.RequestHandler):
             global points
             points += len(randWord)
         global randWord
-        randWord = arr[random.randint(0,len(arr)-1)]
+        randWord = list[random.randint(0,len(list)-1)]
         dict = {"randWord": randWord,
-                "points": points,
-                "time": time}
+                "points": points}
         end_template = jinja_current_dir.get_template("/templates/Game.html")
         self.response.write(end_template.render(dict))
 
