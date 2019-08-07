@@ -2,7 +2,7 @@
  text-align: center;
  display:grid;
  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
- grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+ grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
 #title {
@@ -30,7 +30,7 @@ form {
 body,html {
   background-image: url(https://media0.giphy.com/media/mw5dladT6nyH6/giphy.gif);
   background-repeat: no-repeat;
-  background-position: center bottom;
+  background-position: bottom;
   background-size: auto;
 
 }

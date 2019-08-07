@@ -5,11 +5,22 @@
  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
 }
 
+
 #title {
-  font: P22 Typewriter;
-  font-size: 100px;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 150px;
   grid-column: 2/ span 3;
   text-align: center;
+  color: white;
+}
+
+#description {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 75px;
+  grid-column: 2/ span 3;
+  grid-row: 5;
+  text-align: center;
+  color: white;
 }
 
 form {
@@ -20,7 +31,8 @@ grid-row: 3;
 .btn {
   display: inline-block;
    padding: 15px 25px;
-   font-size: 24px;
+   font-family: 'Roboto Mono', monospace;
+   font-size: 50px;
    cursor: pointer;
    text-align: center;
    text-decoration: none;
@@ -29,7 +41,7 @@ grid-row: 3;
    background-color: #4CAF50;
    border: none;
    border-radius: 15px;
-   box-shadow: 0 9px #999;
+   box-shadow: 0 9px #339933;
    Animated-Buttons - "Pressed Effect";
 
 }
@@ -40,4 +52,12 @@ grid-row: 3;
   background-color: #3e8e41;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
+}
+
+body,html {
+  background-image: url(https://media2.giphy.com/media/rWY9ySfjytitq/giphy.gif?cid=790b76115d4b02ea6755374e364ba736&rid=giphy.gif);
+  background-repeat: no-repeat;
+  background-position: auto;
+  background-size: cover;
+
 }
