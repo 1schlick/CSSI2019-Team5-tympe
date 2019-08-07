@@ -1027,7 +1027,8 @@ class welcome(webapp2.RequestHandler):
                 "points": 0,
                 "time": time}
 
-        threading.Timer(20.0, gameOver).start()
+        timer = threading.Timer(60, gameOver)
+        timer.start()
 
         end_template = jinja_current_dir.get_template("/templates/Game.html")
         self.response.write(end_template.render(dict))
@@ -1036,8 +1037,6 @@ class welcome(webapp2.RequestHandler):
 
 class game(webapp2.RequestHandler):
     userWord = ""
-
-
 
     def post(self):
         global time
@@ -1062,8 +1061,10 @@ class game(webapp2.RequestHandler):
 
 class score(webapp2.RequestHandler):
     def get(self):
+        global time
         dict = {"points": points,
-                "score": points/60.0}
+                "score": points/60.0,
+                "time": time}
         end_template = jinja_current_dir.get_template("/templates/Scores.html")
         self.response.write(end_template.render(dict))
 
