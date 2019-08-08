@@ -1002,7 +1002,36 @@ input.addEventListener("keyup", (event) =>
     points += randWord.length;
     document.getElementById("points").innerHTML = "Points:\n" + points.toString();
     input.value = "";
-    randWord = list[Math.floor(Math.random()*984)];
+    switch(Math.floor(Math.random()*9))
+    {
+      case 0:
+        randWord = list[Math.floor(Math.random()*984)];
+        break;
+      case 1:
+        randWord = list[Math.floor(Math.random()*984)] + "()";
+        break;
+      case 2:
+        randWord = list[Math.floor(Math.random()*984)] + "():";
+        break;
+      case 3:
+        randWord = list[Math.floor(Math.random()*984)] + "();";
+        break;
+      case 4:
+        randWord = "(" + list[Math.floor(Math.random()*984)] + ");";
+        break;
+      case 5:
+        randWord = list[Math.floor(Math.random()*984)] + "[" + Math.floor(Math.random()*5).toString() + "]";
+        break;
+      case 6:
+        randWord = list[Math.floor(Math.random()*984)] + "[" + Math.floor(Math.random()*5).toString() + "];";
+        break;
+      case 7:
+        randWord = "{" + list[Math.floor(Math.random()*984)] + "}";
+        break;
+      case 8:
+        randWord = "{" + list[Math.floor(Math.random()*984)] + "()}";
+        break;
+    }
     document.getElementById("word").innerHTML = randWord;
   }
 })
