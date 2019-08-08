@@ -999,7 +999,7 @@ input.addEventListener("keyup", (event) =>
   //compare user input with randWord
   if (game && input.value === randWord) {
     points += randWord.length;
-    document.getElementById("points").innerHTML = "points: " + points.toString();
+    document.getElementById("points").innerHTML = "points:\n" + points.toString();
     input.value = "";
     randWord = list[Math.floor(Math.random()*984)];
     document.getElementById("word").innerHTML = randWord;
@@ -1008,7 +1008,7 @@ input.addEventListener("keyup", (event) =>
 
 function countDown(){
   if(time >= 0){
-    document.getElementById("time").innerHTML = "time: " + time.toString();
+    document.getElementById("time").innerHTML = "time:\n" + time.toString();
     time -= 1;
   }
   else {
