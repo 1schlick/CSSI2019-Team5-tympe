@@ -998,7 +998,7 @@ input.addEventListener("keyup", (event) =>
 {
   //compare user input with randWord
   if (game && input.value === randWord) {
-    points += 1;
+    points += randWord.length;
     document.getElementById("points").innerHTML = "points: " + points.toString();
     input.value = "";
     randWord = list[Math.floor(Math.random()*984)];
