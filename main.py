@@ -25,21 +25,27 @@ class welcome(webapp2.RequestHandler):
 
 class game(webapp2.RequestHandler):
     def get(self):
-        while true:
-            if self.render.get("#word") == "Game Over":
-                points = self.render.get("#points")
-                score = Score(int(points))
-                score.put()
-                topScores = Score.query().order(Score.score).fetch(5)
-
-
-                end_template = jinja_current_dir.get_template("/templates/Scores.html")
-                self.response.write(end_template.render())
+        def gameOver(self):
+            points = self.render.get("points")
+            #score = Score(int(points))
+            #score.put()
+            #topScores = Score.query().order(Score.score).fetch(1)
+            dict = {"points": points}
+            #        "1": topScores[0],
+            #        "2": topScores[1],
+            #        "3": topScores[2],
+            #        "4": topScores[3],
+            #        "5": topScores[4]}
+            end_template = jinja_current_dir.get_template("/templates/Scores.html")
+            self.response.write(end_template.render(dict))
+        end_template = jinja_current_dir.get_template("/templates/Game.html")
+        self.response.write(end_template.render())
+        threading.Timer(20, gameOver, [self]).start()
 
 class score(webapp2.RequestHandler):
-    def get(self):
-        end_template = jinja_current_dir.get_template("/templates/Scores.html")
-        self.response.write(end_template.render())
+    def post(self):
+        start_template = jinja_current_dir.get_template("/templates/Welcome.html")
+        self.response.write(start_template.render())
 
 app = webapp2.WSGIApplication([
     ('/', welcome),

@@ -991,7 +991,7 @@ document.getElementById("word").innerHTML = randWord;
 
 let input = document.getElementById("box");
 let points = 0;
-let time = 60;
+let time = 20;
 let game = true
 
 input.addEventListener("keyup", (event) =>
