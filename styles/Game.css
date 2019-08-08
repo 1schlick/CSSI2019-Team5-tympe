@@ -1,4 +1,4 @@
-.container {
+body {
  text-align: center;
  display:grid;
  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -8,32 +8,98 @@
 #title {
   font-size: 100px;
   grid-column: 2/ span 3;
+  grid-row: 2;
   text-align: center;
+  font-family: 'Roboto Mono', monospace;
+  background: #b0b0b0;
+  margin-bottom: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  border: 7px outset rgba(28,110,164,0.5);
+  border-radius: 20px 20px 20px 20px;
+
 }
 
 #word {
   grid-column: 2/ span 3;
-  grid-row: 3;
+  grid-row: 4;
   text-align: center;
-  font-size: 25px
+  font-size: 40px;
+  font-family: 'Roboto Mono', monospace;
+  background: #b0b0b0;
+  margin-bottom: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  border: 7px outset rgba(28,110,164,0.5);
+  border-radius: 20px 20px 20px 20px;
 }
 
+#points{
+  grid-column: 2;
+  grid-row: 3;
+  text-align: center;
+  font-size: 20px;
+  font-family: 'Roboto Mono', monospace;
+  background: #b0b0b0;
+  margin-bottom: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  border: 7px outset rgba(28,110,164,0.5);
+  border-radius: 20px 0px 0px 20px;
+}
+
+
+#box {
+  grid-column: 3;
+  grid-row: 6;
+  text-align: center;
+  font-size: 25px;
+  font-family: 'Roboto Mono', monospace;
+  background: #b0b0b0;
+  margin-bottom: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  border: 7px outset rgba(28,110,164,0.5);
+  border-radius: 20px 20px 20px 20px;
+}
+
+#time {
+  grid-column: 4;
+  grid-row: 3;
+  text-align: center;
+  font-size: 20px;
+  font-family: 'Roboto Mono', monospace;
+  background: #b0b0b0;
+  margin-bottom: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  width: auto;
+  border: 7px outset rgba(28,110,164,0.5);
+  border-radius: 0px 20px 20px 0px;
+}
 form {
   grid-column: 2/ span 3;
   grid-row: 4;
   text-align: center;
+  font-family: 'Roboto Mono', monospace;
+  background: #b0b0b0;
+  margin-bottom: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  border: 7px outset rgba(28,110,164,0.5);
+  border-radius: 20px 20px 20px 20px;
 }
 
-#points {
-
-}
 body,html {
-
-}
-body,html {
-  background-image: url(https://media0.giphy.com/media/mw5dladT6nyH6/giphy.gif);
+  background-image: url(https://live.staticflickr.com/4841/45760598514_3da4c18fa7_b.jpg);
   background-repeat: no-repeat;
-  background-position: bottom;
-  background-size: auto;
+  background-position: auto;
+  background-size: cover;
 
 }
